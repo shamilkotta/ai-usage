@@ -1,0 +1,46 @@
+name: AIUsage
+options:
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGN_STYLE: Manual
+    DEVELOPMENT_TEAM: ""
+    ENABLE_HARDENED_RUNTIME: NO
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  AIUsage:
+    type: application
+    platform: macOS
+    sources: [App, Shared]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: dev.shamilkotta.AIUsage
+      PRODUCT_NAME: AI Usage
+    info:
+      path: App/Info.plist
+      properties:
+        LSUIElement: true
+        CFBundleDisplayName: AI Usage
+    dependencies:
+      - target: AIUsageWidget
+  AIUsageWidget:
+    type: app-extension
+    platform: macOS
+    sources: [Widget, Shared]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: dev.shamilkotta.AIUsage.Widget
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: AI Usage
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widget/Widget.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.temporary-exception.files.home-relative-path.read-only:
+          - /.ai-usage-widget/
