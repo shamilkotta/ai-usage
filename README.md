@@ -2,6 +2,11 @@
 
 A macOS Notification Center widget that shows how much of your AI subscription limits you've used — Claude, Codex, Cursor and Grok Bot — in one place, so you don't have to open each app or dashboard to check.
 
+<p>
+  <img src="docs/widget-light.png" alt="AI Usage widget in light mode" width="49%">
+  <img src="docs/widget-dark.png" alt="AI Usage widget in dark mode" width="49%">
+</p>
+
 | Service | What's shown | Credentials used |
 |---|---|---|
 | **Claude** (Claude Code / claude.ai plan) | 5-hour and weekly limits (plus Opus/Sonnet weekly when your plan has them) | Claude Code login in the Keychain (`Claude Code-credentials`) |
